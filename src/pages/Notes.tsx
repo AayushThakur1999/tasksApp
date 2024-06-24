@@ -1,23 +1,26 @@
 import { useState, useEffect } from 'react';
-import { databases } from '../appwrite/config';
-import { Models } from 'appwrite';
+import db from '../appwrite/databases'
+import { type Models } from 'appwrite';
 
-type Note = Models.Document[]
+interface Note extends Models.Document {
+  body: string;
+  completed: boolean;
+}
 
 const Notes = () => {
-  const [notes, setNotes] = useState<Note>([]);
+  const [notes, setNotes] = useState<Note[]>([]);
 
   useEffect(() => {
     init()
   }, []);
 
   const init = async () => {
-    const response = await databases.listDocuments(
-      import.meta.env.VITE_DATABASE_ID,
-      import.meta.env.VITE_COLLECTION_ID_NOTES,
-      []
-    )
-    setNotes(response.documents);
+    const response = await db.notes.list();
+    /* 
+      We use type assertion here because we are certain that 
+      response.documents contains body and completed properties 
+    */
+    setNotes(response.documents as Note[]);
   }
   return (
     <div className='mt-6 text-center text-2xl'>
