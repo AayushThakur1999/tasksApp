@@ -16,7 +16,7 @@ interface DbOperations {
   create: (payload: NotePayload, permissions?: string[], id?: string) => Promise<Models.Document>;
   get: (id: string) => Promise<Models.Document>;
   update: (id: string, payload: Partial<NotePayload>, permissions?: string[]) => Promise<Models.Document>;
-  delete: (id: string) => Promise<{}>;
+  delete: (id: string) => Promise<Record<string, never>>;
 }
 
 interface Db {
