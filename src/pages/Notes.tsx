@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import db from '../appwrite/databases'
-import { type Models } from 'appwrite';
+import { Query, type Models } from 'appwrite';
+import NoteForm from '../components/NoteForm';
 
-interface Note extends Models.Document {
+export interface Note extends Models.Document {
   body: string;
   completed: boolean;
 }
@@ -15,22 +16,24 @@ const Notes = () => {
   }, []);
 
   const init = async () => {
-    const response = await db.notes.list();
-    /* 
-      We use type assertion here because we are certain that 
-      response.documents contains body and completed properties 
-    */
-    setNotes(response.documents as Note[]);
+    const response = await db.notes.list([Query.orderDesc('$createdAt')]);
+    const validNotes = response.documents.filter((doc): doc is Note =>
+      typeof doc.body === 'string' && typeof doc.completed === 'boolean'
+    );
+    setNotes(validNotes);
   }
   return (
     <div className='mt-6 text-center text-2xl'>
-      {notes.map(note => {
-        return (
-          <div key={note.$id}>
-            {note.body}
-          </div>
-        )
-      })}
+      <NoteForm setNotes={setNotes} />
+      <div>
+        {notes.map(note => {
+          return (
+            <div key={note.$id}>
+              {note.body}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

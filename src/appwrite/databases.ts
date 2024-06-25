@@ -7,6 +7,10 @@ interface Collection {
   name: string,
 }
 
+interface NotePayload {
+  body: string;
+}
+
 interface DbOperations {
   list: (queries?: string[]) => Promise<Models.DocumentList<Models.Document>>;
   create: (payload: NotePayload, permissions?: string[], id?: string) => Promise<Models.Document>;
@@ -17,10 +21,6 @@ interface DbOperations {
 
 interface Db {
   [key: string]: DbOperations
-}
-
-interface NotePayload {
-  body: string;
 }
 
 const db: Db = {};
