@@ -29,7 +29,7 @@ const Notes = () => {
       <div>
         {notes.map(note => {
           return (
-            <SingleNote key={note.$id} noteData={note} />
+            <SingleNote key={note.$id} setNotes={setNotes} noteData={note} />
           )
         })}
       </div>

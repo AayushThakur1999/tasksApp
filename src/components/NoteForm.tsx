@@ -1,11 +1,9 @@
 import db from '../appwrite/databases';
 import { type Note } from '../pages/Notes';
 
-interface NoteFormProps {
-  setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
-}
+export type NoteFormProps = React.Dispatch<React.SetStateAction<Note[]>>;
 
-const NoteForm = ({ setNotes }: NoteFormProps) => {
+const NoteForm = ({ setNotes }: { setNotes: NoteFormProps }) => {
   const handleAdd = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
