@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import db from '../appwrite/databases'
 import { Query, type Models } from 'appwrite';
 import NoteForm from '../components/NoteForm';
+import SingleNote from '../components/SingleNote';
 
 export interface Note extends Models.Document {
   body: string;
@@ -28,9 +29,7 @@ const Notes = () => {
       <div>
         {notes.map(note => {
           return (
-            <div key={note.$id}>
-              {note.body}
-            </div>
+            <SingleNote key={note.$id} noteData={note} />
           )
         })}
       </div>

@@ -9,6 +9,7 @@ interface Collection {
 
 interface NotePayload {
   body: string;
+  completed: boolean;
 }
 
 interface DbOperations {

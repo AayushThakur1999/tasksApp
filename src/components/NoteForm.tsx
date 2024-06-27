@@ -15,7 +15,7 @@ const NoteForm = ({ setNotes }: NoteFormProps) => {
     if (noteBody === '') return
 
     try {
-      const payload = { body: noteBody }
+      const payload = { body: noteBody, completed: false }
 
       const newNote = await db.notes.create(payload)
       setNotes(prevNotes => [...prevNotes, newNote as Note])
