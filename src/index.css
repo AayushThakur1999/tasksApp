@@ -2,9 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-background-color: #fff;
+  --secondary-background-color: #f7f7f7;
 
-@layer base {
-  body {
-    @apply bg-[#00203FFF] text-[#ADEFD1FF];
+  --primary-text-color: #000;
+  --secondary-text-color: #4b4c53;
+
+  --primary-border-color: #4b4c53;
+
+  --button-solid-background-color: #000;
+  --button-solid-text-color: #fff;
+
+  --button-outlined-background-color: transparent;
+  --button-outlined-text-color: #000;
+
+  --alert-color: #FFF9E7;
+  --alert-border-color: #FFBF00;
+  --alert-text-color: #b8952f;
+}
+
+.dark {
+  --primary-background-color: #1f2028;
+  --secondary-background-color: #2e3039;
+
+  --primary-text-color: rgba(255, 255, 255, 0.87);
+  --secondary-text-color: #4b4c53;
+
+  --primary-border-color: #4b4c53;
+
+  --button-solid-background-color: #fff;
+  --button-solid-text-color: #000;
+
+  --button-outlined-background-color: transparent;
+  --button-outlined-text-color: #fff;
+
+}
+
+.purple {
+  --primary-background-color: rgba(24, 16, 40, 1);
+  --secondary-background-color: rgba(44, 36, 70, 1);
+
+  --primary-text-color: rgba(255, 255, 255, 0.87);
+  --secondary-text-color: #8549a7;
+
+  --primary-border-color: #8549a7;
+
+  --button-solid-background-color: #fff;
+  --button-solid-text-color: #000;
+
+  --button-outlined-background-color: transparent;
+  --button-outlined-text-color: #fff;
+
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+@layer utilities {
+  .app {
+    @apply h-full bg-[var(--primary-background-color)] text-[var(--primary-text-color)] transition-colors ease-in-out duration-500;
+  }
+
+  .todo-input {
+    @apply w-full p-4 border-2 border-solid border-[var(--primary-border-color)] rounded-lg text-lg bg-transparent text-[var(--primary-text-color)];
+  }
+
+  .single-note {
+    @apply bg-[var(--secondary-background-color)] p-4 my-4 rounded-md flex justify-between;
+  }
+
+  .theme-option {
+    @apply h-6 w-6 border border-solid rounded-[50%] cursor-pointer;
+  }
+
+  #theme-light {
+    border-color: #000;
+    background-color: #fff;
+  }
+
+  #theme-dark {
+    border-color: #fff;
+    background-color: #000;
+  }
+
+  #theme-purple {
+    border-color: #954ebe;
+    background-color: #954ebe;
+  }
+}
+
+@media screen and (max-width:600px) {
+  #app {
+    padding: 0 1em;
   }
 }

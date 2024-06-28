@@ -25,11 +25,12 @@ const NoteForm = ({ setNotes }: { setNotes: NoteFormProps }) => {
   }
 
   return (
-    <form onSubmit={handleAdd}>
+    <form onSubmit={handleAdd} className='my-9'>
       <input
         type="text"
         name="body"
         placeholder="💭 What's on the agenda?"
+        className='todo-input'
       />
     </form>
   )

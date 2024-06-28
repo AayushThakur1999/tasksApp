@@ -3,6 +3,7 @@ import db from '../appwrite/databases'
 import { Query, type Models } from 'appwrite';
 import NoteForm from '../components/NoteForm';
 import SingleNote from '../components/SingleNote';
+import ThemeOption from '../components/ThemeOption';
 
 export interface Note extends Models.Document {
   body: string;
@@ -24,8 +25,18 @@ const Notes = () => {
     setNotes(validNotes);
   }
   return (
-    <div className='mt-6 text-center text-2xl'>
+    <>
+      <div>
+        <h1 className='text-4xl font-bold my-6'>✍🏻My Todo List</h1>
+      </div>
+
+      <div className="flex gap-3">
+        <ThemeOption theme='dark' />
+        <ThemeOption theme='light' />
+        <ThemeOption theme='purple' />
+      </div>
       <NoteForm setNotes={setNotes} />
+
       <div>
         {notes.map(note => {
           return (
@@ -33,7 +44,7 @@ const Notes = () => {
           )
         })}
       </div>
-    </div>
+    </>
   )
 }
 

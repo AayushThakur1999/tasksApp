@@ -15,8 +15,18 @@ const router = createBrowserRouter([
 
 function App() {
 
+  const selectedTheme = localStorage.getItem('theme')
+
+  if (selectedTheme) {
+    document.body.className = selectedTheme
+  }
+
   return (
-    <RouterProvider router={router} />
+    <div className='app'>
+      <div className='max-w-screen-sm mx-auto py-9'>
+        <RouterProvider router={router} />
+      </div>
+    </div>
   )
 }
 

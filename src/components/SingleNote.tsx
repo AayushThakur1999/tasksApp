@@ -25,11 +25,11 @@ const SingleNote = ({ setNotes, noteData }: { setNotes: NoteFormProps, noteData:
   }
 
   return (
-    <div>
-      <span onClick={handleUpdate}>
+    <div className='single-note'>
+      <span onClick={handleUpdate} className='cursor-pointer'>
         {note.completed ? <s>{note.body}</s> : <>{note.body}</>}
       </span>
-      <div onClick={handleDelete}>
+      <div onClick={handleDelete} className='cursor-pointer'>
         <DeleteIcon />
       </div>
     </div>
