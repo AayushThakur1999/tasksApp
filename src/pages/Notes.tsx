@@ -4,6 +4,7 @@ import { Query, type Models } from 'appwrite';
 import NoteForm from '../components/NoteForm';
 import SingleNote from '../components/SingleNote';
 import ThemeOption from '../components/ThemeOption';
+import LogoutButton from '../components/LogoutButton';
 
 export interface Note extends Models.Document {
   body: string;
@@ -44,6 +45,7 @@ const Notes = () => {
           )
         })}
       </div>
+      <LogoutButton />
     </>
   )
 }

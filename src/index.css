@@ -65,7 +65,7 @@ body,
 
 @layer utilities {
   .app {
-    @apply h-full bg-[var(--primary-background-color)] text-[var(--primary-text-color)] transition-colors ease-in-out duration-500;
+    @apply min-h-screen bg-[var(--primary-background-color)] text-[var(--primary-text-color)] transition-colors ease-in-out duration-500;
   }
 
   .todo-input {
